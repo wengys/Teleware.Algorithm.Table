@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Runner\Sample.csproj", "{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableBuilder.Shared", "Teleware.Algorithm.Table.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj", "{41C4562F-FB21-4444-938C-2F040B17A61A}"
 EndProject

@@ -11,7 +11,7 @@ using Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions;
 using Teleware.Algorithm.TableBuilder.Shared.RowDefinitions;
 using Teleware.Algorithm.TableBuilder.Shared.Rows;
 
-namespace Runner
+namespace Sample
 {
     internal class Program
     {
@@ -49,13 +49,8 @@ namespace Runner
                }))
                .SetMergeCellsCollector(new TestMergeCellsCollector())
                .CreateBuilder();
-            var before = GC.GetTotalMemory(false);
-            var body = builder.Build(null);
-            GC.Collect();
-            GC.WaitForFullGCComplete();
-            var after = GC.GetTotalMemory(false);
 
-            var delta = after - before;
+            var body = builder.Build(null);
         }
 
         private class TestMergeCellsCollector : IMergeCellsCollector
