@@ -44,11 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IMergeCellsCollector.cs" />
-    <Compile Include="Impl\DefaultTableBulder.cs" />
+    <Compile Include="Impl\DefaultTableBodyBuilder.cs" />
     <Compile Include="IRowDataPicker.cs" />
     <Compile Include="ITableBodyBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableBodyBuilderFactory.cs" />
+    <Compile Include="TableBodyBuilderConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Teleware.Algorithm.Table.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj">

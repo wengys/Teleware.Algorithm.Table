@@ -11,7 +11,11 @@ using Teleware.Algorithm.TableBuilder.Shared.Rows;
 
 namespace Teleware.Algorithm.TableBodyBuilder.Impl
 {
-    public class DefaultTableBodyBuilder : ITableBodyBuilder
+    /// <summary>
+    /// 表身生成器实例
+    /// </summary>
+
+    internal class DefaultTableBodyBuilder : ITableBodyBuilder
     {
         private IRowDataPicker _picker;
         private IMergeCellsCollector _mergeCellsCollector;
@@ -30,45 +34,13 @@ namespace Teleware.Algorithm.TableBodyBuilder.Impl
             _aggregateRows = aggregateRows ?? new AggregateRowDefinition[0];
         }
 
-        private static TResult MapRowByType<TResult>(Row row, Func<DataRow, TResult> dataRowMapper, Func<AggregateRow, TResult> aggregateRowMapper)
-        {
-            if (row is DataRow)
-            {
-                return dataRowMapper((DataRow)row);
-            }
-            else if (row is AggregateRow)
-            {
-                return aggregateRowMapper((AggregateRow)row);
-            }
-            else
-            {
-                throw new System.NotSupportedException($"无法识别的行类型: {row.GetType()}");
-            }
-        }
-
-        private static void VisitRowByType(Row row, Action<DataRow> dataRowVisitor, Action<AggregateRow> aggregateRowVisitor)
-        {
-            if (row is DataRow)
-            {
-                dataRowVisitor((DataRow)row);
-            }
-            else if (row is AggregateRow)
-            {
-                aggregateRowVisitor((AggregateRow)row);
-            }
-            else
-            {
-                throw new System.NotSupportedException($"无法识别的行类型: {row.GetType()}");
-            }
-        }
-
         public TableBody Build(dynamic rawDatas)
         {
             IDictionary<string, dynamic>[] rowDatas = GetRowDatas(rawDatas);
             var body = CreateBody(rowDatas);
             var aggregateRows = CreateAggregateRows(body);
             MergeAggregateRows(body, aggregateRows);
-            for (int i = 0; i < body.Count; i++)
+            for (int i = 0; i < body.Count; i++) // 以下合并公式计算与行列装饰的循环，很惭愧，就优化了点微小的性能
             {
                 var row = body[i];
                 EvalFormulaCells(row);
@@ -216,8 +188,7 @@ namespace Teleware.Algorithm.TableBodyBuilder.Impl
                 return Enumerable.Empty<IEnumerable<CellReference>>();
             }
             var mergeCellPairs = _mergeCellsCollector.Collect(data)
-                .OrderBy(t => t.Item1.RowNum)
-                .ThenBy(t => t.Item1.ColNum).ToArray(); // 确保至少起始单元格从左上到右下
+                .OrderBy(t => t.Item1).ToArray(); // 确保至少起始单元格从左上到右下
 
             var visitedCells = new List<CellReference>();
             var mergeCellGroups = new List<List<CellReference>>();
@@ -228,7 +199,8 @@ namespace Teleware.Algorithm.TableBodyBuilder.Impl
                     continue;
                 }
                 List<CellReference> mergeCellList = CollectMergeGroup(mergeCellPairs, mergeCellPair);
-                visitedCells.AddRange(mergeCellList.OrderBy(c => c.RowNum).ThenBy(c => c.ColNum)); // 确保返回结果有序
+                mergeCellList.Sort();
+                visitedCells.AddRange(mergeCellList); // 确保返回结果有序
                 mergeCellGroups.Add(mergeCellList);
             }
 
@@ -237,6 +209,9 @@ namespace Teleware.Algorithm.TableBodyBuilder.Impl
 
         private static List<CellReference> CollectMergeGroup(Tuple<CellReference, CellReference>[] mergeCells, Tuple<CellReference, CellReference> mergeCellPair)
         {
+            /*
+             * 将形如 (a, b), (b, c) 的合并单元格组整合成 [a, b, c]
+             */
             var mergeCellList = new List<CellReference>();
             mergeCellList.Add(mergeCellPair.Item1);
             mergeCellList.Add(mergeCellPair.Item2);
@@ -251,7 +226,39 @@ namespace Teleware.Algorithm.TableBodyBuilder.Impl
                 }
             }
 
-            return mergeCellList;
+            return mergeCellList; //TODO: 检查是否出现“+”之类实际上无法合并的情况
+        }
+
+        private static TResult MapRowByType<TResult>(Row row, Func<DataRow, TResult> dataRowMapper, Func<AggregateRow, TResult> aggregateRowMapper)
+        {
+            if (row is DataRow)
+            {
+                return dataRowMapper((DataRow)row);
+            }
+            else if (row is AggregateRow)
+            {
+                return aggregateRowMapper((AggregateRow)row);
+            }
+            else
+            {
+                throw new System.NotSupportedException($"无法识别的行类型: {row.GetType()}");
+            }
+        }
+
+        private static void VisitRowByType(Row row, Action<DataRow> dataRowVisitor, Action<AggregateRow> aggregateRowVisitor)
+        {
+            if (row is DataRow)
+            {
+                dataRowVisitor((DataRow)row);
+            }
+            else if (row is AggregateRow)
+            {
+                aggregateRowVisitor((AggregateRow)row);
+            }
+            else
+            {
+                throw new System.NotSupportedException($"无法识别的行类型: {row.GetType()}");
+            }
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿namespace Teleware.Algorithm.TableBuilder.Shared
+﻿using System;
+
+namespace Teleware.Algorithm.TableBuilder.Shared
 {
     /// <summary>
     /// 表示对表格中某个单元格的引用
     /// </summary>
-    public struct CellReference
+    public struct CellReference : System.IComparable<CellReference>
     {
         /// <summary>
         /// 初始化新单元格
@@ -44,6 +46,32 @@
         public static CellReference Create(int rowNum, int colNum)
         {
             return new CellReference(rowNum, colNum);
+        }
+
+        /// <summary>
+        /// 比较两个引用的大小，先比较行坐标再比较列坐标
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public int CompareTo(CellReference other)
+        {
+            if (RowNum < other.RowNum)
+            {
+                return -1;
+            }
+            else if (RowNum > other.RowNum)
+            {
+                return 1;
+            }
+            if (ColNum < other.ColNum)
+            {
+                return -1;
+            }
+            else if (ColNum > other.ColNum)
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 }

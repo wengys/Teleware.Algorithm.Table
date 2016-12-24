@@ -51,7 +51,6 @@
     <Compile Include="AggregateColumnDefinition.cs" />
     <Compile Include="AggregateColumnDefinitions\FormulaAggregateColumnDefinition.cs" />
     <Compile Include="AggregateColumnDefinitions\TextAggregateColumnDefinition.cs" />
-    <Compile Include="AggregateColumnDefinitions\EmptyAggregateColumnDefinition.cs" />
     <Compile Include="BuildContext\AggregateRowBuildContext.cs" />
     <Compile Include="Cell.cs" />
     <Compile Include="Cells\EmptyCell.cs" />
@@ -59,7 +58,6 @@
     <Compile Include="Cells\ReferenceCell.cs" />
     <Compile Include="Cells\StaticTextCell.cs" />
     <Compile Include="DataColumnDefinition.cs" />
-    <Compile Include="DataColumnDefinitions\EmptyColumnDefinition.cs" />
     <Compile Include="DataColumnDefinitions\FormulaColumnDefinition.cs" />
     <Compile Include="DataColumnDefinitions\ReferenceColumnDefinition.cs" />
     <Compile Include="ColumnFormulas\SumRefKeysFormula.cs" />

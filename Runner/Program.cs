@@ -17,11 +17,23 @@ namespace Sample
     {
         private static void Main(string[] args)
         {
-            //TODO: 行装饰器
+            // TODO: UNIT TEST
+            var zero = CellReference.Create(0, 0);
+            var zero2 = CellReference.Create(0, 0);
+            var zeroOne = CellReference.Create(0, 1);
+            var zeroTwo = CellReference.Create(0, 2);
+            var oneZero = CellReference.Create(1, 0);
+
+            var ax = zero.CompareTo(zero2);
+            var bx = zero.CompareTo(zeroOne);
+            var cx = zeroOne.CompareTo(oneZero);
+            var dx = oneZero.CompareTo(zeroOne);
+            var ex = oneZero.CompareTo(zeroTwo);
+
             Func<DataRow, string> aggregateKeySelector = dataRow => "total";
             var builder = TableBodyBuilderConfiguration.Instance
                .SetRowDataPicker(new TestPicker())
-               .SetDataRow(new DataRowDefinition(new DataColumnDefinition[] {
+               .SetDataRowDefinition(new DataRowDefinition(new DataColumnDefinition[] {
                    new ReferenceColumnDefinition("a", "a",  (c, ctx) =>
                    {
                        var v = ctx.GetColumnDataByRefKey("a");
@@ -36,7 +48,7 @@ namespace Sample
                    r.Metadata.Strong = r.Cells[3].Value > 8;
                    return r;
                }))
-               .SetAggregateRows(new AggregateRowDefinition(aggregateKeySelector, new AggregateColumnDefinition[] {
+               .SetAggregateRowsDefinition(new AggregateRowDefinition(aggregateKeySelector, new AggregateColumnDefinition[] {
                    new TextAggregateColumnDefinition(0,"sum:"),
                    new FormulaAggregateColumnDefinition(3,new SumRefKeysDecimalFormula("a","b","c"),(c,ctx)=> {
                        c.Metadata.ResourceUrl="http://www.baidu.com?view="+ctx.AggregateKey;
