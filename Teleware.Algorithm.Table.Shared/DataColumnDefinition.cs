@@ -16,7 +16,7 @@ namespace Teleware.Algorithm.TableBuilder.Shared
         private static Func<Cell, DataRowBuildContext, Cell> _id = (c, ctx) => c;
 
         /// <summary>
-        /// 初始化一个数据列
+        /// 初始化数据列
         /// </summary>
         /// <param name="cellDecorator">单元格装饰器，用于修饰此列生成的单元格</param>
         public DataColumnDefinition(Func<Cell, DataRowBuildContext, Cell> cellDecorator)
