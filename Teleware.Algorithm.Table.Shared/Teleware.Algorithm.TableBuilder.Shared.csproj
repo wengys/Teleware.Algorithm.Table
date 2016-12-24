@@ -48,7 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregateCells\AggregateFormulaCell.cs" />
     <Compile Include="AggregateColumnDefinition.cs" />
     <Compile Include="AggregateColumnDefinitions\FormulaAggregateColumnDefinition.cs" />
     <Compile Include="AggregateColumnDefinitions\TextAggregateColumnDefinition.cs" />

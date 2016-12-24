@@ -1,23 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
 using Teleware.Algorithm.TableBuilder.Shared.Cells;
 
 namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
 {
+    /// <summary>
+    /// 公式列定义
+    /// </summary>
+    /// <remarks>
+    /// 公式列指由行中由其他列计算所得的列, 类似 SELETE A, B, A+B AS C FROM FOO 中的 C
+    /// </remarks>
     public class FormulaColumnDefinition : DataColumnDefinition
     {
         private string _columnText;
 
+        /// <summary>
+        /// 初始化公式列定义
+        /// </summary>
+        /// <param name="columnText">列头</param>
+        /// <param name="formula">公式</param>
         public FormulaColumnDefinition(
             string columnText,
             IFormula formula) : this(columnText, formula, null)
         {
         }
 
+        /// <summary>
+        /// 初始化公式列定义
+        /// </summary>
+        /// <param name="columnText">列头</param>
+        /// <param name="formula">公式</param>
+        /// <param name="cellDecorator">列装饰器</param>
         public FormulaColumnDefinition(
             string columnText,
             IFormula formula,
@@ -27,8 +40,14 @@ namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
             Formula = formula;
         }
 
+        /// <summary>
+        /// 单元格值生成公式
+        /// </summary>
         public IFormula Formula { get; set; }
 
+        /// <summary>
+        /// 列头
+        /// </summary>
         public override string ColumnText
         {
             get
@@ -37,9 +56,10 @@ namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
             }
         }
 
+        /// <see cref="DataColumnDefinition.BuildCell(DataRowBuildContext)"/>
         protected override Cell BuildCell(DataRowBuildContext context)
         {
-            return new FormulaCell(this.Formula);
+            return new FormulaCell(Formula);
         }
     }
 }

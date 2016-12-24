@@ -1,20 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
 using Teleware.Algorithm.TableBuilder.Shared.Cells;
 
 namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
 {
+    /// <summary>
+    /// 引用列定义
+    /// </summary>
+    /// <remarks>
+    /// 引用列指由行中特定<see cref="RefKey"/>的数据直接产生的列, 类似 SELETE NAME FROM PERSONS 中的 NAME
+    /// </remarks>
     public class ReferenceColumnDefinition : DataColumnDefinition
     {
-        protected static Func<dynamic, dynamic> _id = a => a;
+        private static Func<dynamic, dynamic> _id = a => a;
 
         private string _columnText;
-        private Func<dynamic, dynamic> _valueGetter;
+        private Func<dynamic, dynamic> _valueMapper;
 
+        /// <summary>
+        /// 初始化新引用列定义
+        /// </summary>
+        /// <param name="columnText">列头</param>
+        /// <param name="refKey">列相关数据的键</param>
         public ReferenceColumnDefinition(
             string columnText,
             string refKey
@@ -22,14 +29,26 @@ namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
         {
         }
 
+        /// <summary>
+        /// 初始化新引用列定义
+        /// </summary>
+        /// <param name="columnText">列头</param>
+        /// <param name="refKey">列相关数据的键</param>
+        /// <param name="valueMapper">值映射器</param>
         public ReferenceColumnDefinition(
             string columnText,
             string refKey,
-            Func<dynamic, dynamic> valueGetter
-            ) : this(columnText, refKey, valueGetter, null)
+            Func<dynamic, dynamic> valueMapper
+            ) : this(columnText, refKey, valueMapper, null)
         {
         }
 
+        /// <summary>
+        /// 初始化新引用列定义
+        /// </summary>
+        /// <param name="columnText">列头</param>
+        /// <param name="refKey">列相关数据的键</param>
+        /// <param name="cellDecorator">单元格装饰器</param>
         public ReferenceColumnDefinition(
             string columnText,
             string refKey,
@@ -38,20 +57,36 @@ namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
         {
         }
 
+        /// <summary>
+        /// 初始化新引用列定义
+        /// </summary>
+        /// <param name="columnText">列头</param>
+        /// <param name="refKey">列相关数据的键</param>
+        /// <param name="valueMapper">值映射器</param>
+        /// <param name="cellDecorator">单元格装饰器</param>
         public ReferenceColumnDefinition(
             string columnText,
             string refKey,
-            Func<dynamic, dynamic> valueGetter,
+            Func<dynamic, dynamic> valueMapper,
             Func<Cell, DataRowBuildContext, Cell> cellDecorator
             ) : base(cellDecorator)
         {
             _columnText = columnText;
             RefKey = refKey;
-            _valueGetter = valueGetter ?? _id;
+            _valueMapper = valueMapper ?? _id;
         }
 
+        /// <summary>
+        /// 列相关数据的键
+        /// </summary>
+        /// <remarks>
+        /// 用于指定列所关联的行数据
+        /// </remarks>
         public string RefKey { get; }
 
+        /// <summary>
+        /// 列头
+        /// </summary>
         public override string ColumnText
         {
             get
@@ -60,6 +95,7 @@ namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
             }
         }
 
+        /// <see cref="DataColumnDefinition.BuildCell(DataRowBuildContext)"/>
         protected override Cell BuildCell(DataRowBuildContext context)
         {
             var data = context.GetColumnDataByRefKey(RefKey);
@@ -67,7 +103,7 @@ namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
             {
                 return EmptyCell.Singleton;
             }
-            var column = new ReferenceCell(_valueGetter(data), data);
+            var column = new ReferenceCell(_valueMapper(data), data);
             return column;
         }
     }

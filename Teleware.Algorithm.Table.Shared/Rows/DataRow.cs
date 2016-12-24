@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
-using Teleware.Algorithm.TableBuilder.Shared.RowDefinitions;
 
 namespace Teleware.Algorithm.TableBuilder.Shared.Rows
 {

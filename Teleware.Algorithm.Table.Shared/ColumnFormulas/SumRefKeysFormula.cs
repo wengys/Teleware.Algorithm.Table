@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.Shared.Rows;
 
 namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
@@ -18,26 +16,25 @@ namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
         /// <summary>
         /// 初始化公式
         /// </summary>
-        /// <param name="valueGetter">取值器，获取列数据对应的值</param>
+        /// <param name="valueMapper">值映射器，将列数据转为对应的值</param>
         /// <param name="adder">加法器</param>
         /// <param name="refKeys">键名列表</param>
-        public SumRefKeysFormula(Func<dynamic, TValue?> valueGetter, Func<TValue?, TValue?, TValue?> adder, params string[] refKeys)
+        public SumRefKeysFormula(Func<dynamic, TValue?> valueMapper, Func<TValue?, TValue?, TValue?> adder, params string[] refKeys)
         {
             RefKeys = refKeys;
-            ValueGetter = valueGetter;
+            ValueMapper = valueMapper;
             Adder = adder;
         }
 
         /// <summary>
         /// 初始化公式
         /// </summary>
-        /// <param name="valueGetter">取值器，获取列数据对应的值</param>
         /// <param name="adder">加法器</param>
         /// <param name="refKeys">键名列表</param>
         public SumRefKeysFormula(Func<TValue?, TValue?, TValue?> adder, params string[] refKeys)
         {
             RefKeys = refKeys;
-            ValueGetter = _id;
+            ValueMapper = _id;
             Adder = adder;
         }
 
@@ -52,9 +49,9 @@ namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
         public string[] RefKeys { get; }
 
         /// <summary>
-        /// 取值器，获取列数据对应的值
+        /// 值映射器，将列数据转为对应的值
         /// </summary>
-        public Func<dynamic, TValue?> ValueGetter { get; }
+        public Func<dynamic, TValue?> ValueMapper { get; }
 
         /// <see cref="IFormula.Execute(IEnumerable{DataRow})"/>
         public dynamic Execute(IEnumerable<DataRow> rows)
@@ -64,7 +61,7 @@ namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
                 var columnData = row.RowBuildContext.GetColumnDataByRefKey(k);
                 if (columnData != null)
                 {
-                    return ValueGetter(columnData);
+                    return ValueMapper(columnData);
                 }
                 return null;
             })).Where(v => v != null);
@@ -86,7 +83,6 @@ namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
         /// 初始化公式
         /// </summary>
         /// <param name="valueGetter">取值器，获取列数据对应的值</param>
-        /// <param name="adder">加法计算器</param>
         /// <param name="refKeys">键名列表</param>
         public SumRefKeysDecimalFormula(Func<dynamic, decimal?> valueGetter, params string[] refKeys)
         {
@@ -97,7 +93,6 @@ namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
         /// <summary>
         /// 初始化公式
         /// </summary>
-        /// <param name="adder">加法计算器</param>
         /// <param name="refKeys">键名列表</param>
         public SumRefKeysDecimalFormula(params string[] refKeys)
         {

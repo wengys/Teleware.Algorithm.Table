@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.Shared;
-using Teleware.Algorithm.TableBuilder.Shared.AggregateCells;
 using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
 using Teleware.Algorithm.TableBuilder.Shared.Cells;
 using Teleware.Algorithm.TableBuilder.Shared.RowDefinitions;
@@ -182,9 +181,9 @@ namespace Teleware.Algorithm.TableBodyBuilder.Impl
             {
                 foreach (var cell in ar.Cells)
                 {
-                    if (cell is AggregateFormulaCell)
+                    if (cell is FormulaCell)
                     {
-                        (cell as AggregateFormulaCell).ExecuteFormula(((AggregateRow)row).RowBuildContext.RowsToAggregate);
+                        (cell as FormulaCell).ExecuteFormula(((AggregateRow)row).RowBuildContext.RowsToAggregate);
                     }
                 }
             });

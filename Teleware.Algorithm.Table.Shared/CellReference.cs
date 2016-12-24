@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Teleware.Algorithm.TableBuilder.Shared
+﻿namespace Teleware.Algorithm.TableBuilder.Shared
 {
     /// <summary>
     /// 表示对表格中某个单元格的引用

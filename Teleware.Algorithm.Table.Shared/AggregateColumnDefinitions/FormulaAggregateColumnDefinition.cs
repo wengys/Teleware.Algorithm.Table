@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Teleware.Algorithm.TableBuilder.Shared.AggregateCells;
 using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
+using Teleware.Algorithm.TableBuilder.Shared.Cells;
 
 namespace Teleware.Algorithm.TableBuilder.Shared.AggregateColumnDefinitions
 {
@@ -23,7 +23,7 @@ namespace Teleware.Algorithm.TableBuilder.Shared.AggregateColumnDefinitions
 
         protected override Cell BuildCell(AggregateRowBuildContext context)
         {
-            return new AggregateFormulaCell(this.Formula);
+            return new FormulaCell(this.Formula);
         }
     }
 }
