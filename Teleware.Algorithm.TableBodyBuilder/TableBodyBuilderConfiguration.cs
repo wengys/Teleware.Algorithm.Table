@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBodyBuilder.Impl;
-using Teleware.Algorithm.TableBuilder.Shared;
-using Teleware.Algorithm.TableBuilder.Shared.RowDefinitions;
+using Teleware.Algorithm.TableBuilder;
+using Teleware.Algorithm.TableBuilder.RowDefinitions;
 
 namespace Teleware.Algorithm.TableBodyBuilder
 {

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBodyBuilder;
-using Teleware.Algorithm.TableBuilder.Shared;
-using Teleware.Algorithm.TableBuilder.Shared.AggregateColumnDefinitions;
-using Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas;
-using Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions;
-using Teleware.Algorithm.TableBuilder.Shared.RowDefinitions;
-using Teleware.Algorithm.TableBuilder.Shared.Rows;
+using Teleware.Algorithm.TableBuilder;
+using Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions;
+using Teleware.Algorithm.TableBuilder.ColumnFormulas;
+using Teleware.Algorithm.TableBuilder.DataColumnDefinitions;
+using Teleware.Algorithm.TableBuilder.RowDefinitions;
+using Teleware.Algorithm.TableBuilder.Rows;
 
 namespace Sample
 {

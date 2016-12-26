@@ -1,7 +1,7 @@
 ﻿using System;
-using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
+using Teleware.Algorithm.TableBuilder.BuildContext;
 
-namespace Teleware.Algorithm.TableBuilder.Shared
+namespace Teleware.Algorithm.TableBuilder
 {
     /// <summary>
     /// 数据列定义基类

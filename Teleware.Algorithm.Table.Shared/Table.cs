@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Teleware.Algorithm.TableBuilder.Shared
+namespace Teleware.Algorithm.TableBuilder
 {
     /// <summary>
     /// 表格

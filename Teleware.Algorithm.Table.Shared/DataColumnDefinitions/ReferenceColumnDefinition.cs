@@ -1,8 +1,8 @@
 ﻿using System;
-using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
-using Teleware.Algorithm.TableBuilder.Shared.Cells;
+using Teleware.Algorithm.TableBuilder.BuildContext;
+using Teleware.Algorithm.TableBuilder.Cells;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions
+namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
 {
     /// <summary>
     /// 引用列定义

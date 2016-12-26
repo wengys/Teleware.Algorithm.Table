@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
-using Teleware.Algorithm.TableBuilder.Shared.Rows;
+using Teleware.Algorithm.TableBuilder.BuildContext;
+using Teleware.Algorithm.TableBuilder.Rows;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.RowDefinitions
+namespace Teleware.Algorithm.TableBuilder.RowDefinitions
 {
     /// <summary>
     /// 数据行定义

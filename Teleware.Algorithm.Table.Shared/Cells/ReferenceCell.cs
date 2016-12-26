@@ -1,6 +1,6 @@
-﻿using Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions;
+﻿using Teleware.Algorithm.TableBuilder.DataColumnDefinitions;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.Cells
+namespace Teleware.Algorithm.TableBuilder.Cells
 {
     /// <summary>
     /// 引用单元格

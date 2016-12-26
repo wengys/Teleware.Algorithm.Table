@@ -1,4 +1,4 @@
-﻿namespace Teleware.Algorithm.TableBuilder.Shared.Cells
+﻿namespace Teleware.Algorithm.TableBuilder.Cells
 {
     /// <summary>
     /// 静态文本单元格

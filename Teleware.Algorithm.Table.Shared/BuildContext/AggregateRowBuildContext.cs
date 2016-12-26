@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Teleware.Algorithm.TableBuilder.Shared.RowDefinitions;
-using Teleware.Algorithm.TableBuilder.Shared.Rows;
+using Teleware.Algorithm.TableBuilder.RowDefinitions;
+using Teleware.Algorithm.TableBuilder.Rows;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.BuildContext
+namespace Teleware.Algorithm.TableBuilder.BuildContext
 {
     /// <summary>
     /// 聚合行创建上下文

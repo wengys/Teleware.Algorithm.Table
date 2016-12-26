@@ -4,7 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Teleware.Algorithm.TableBuilder.Shared;
+using Teleware.Algorithm.TableBuilder;
 
 namespace Teleware.Algorithm.TableBodyBuilder
 {

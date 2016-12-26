@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Teleware.Algorithm.TableBuilder.Shared
+namespace Teleware.Algorithm.TableBuilder
 {
     /// <summary>
     /// 表示对表格中某个单元格的引用

@@ -1,6 +1,6 @@
 ﻿using System.Dynamic;
 
-namespace Teleware.Algorithm.TableBuilder.Shared
+namespace Teleware.Algorithm.TableBuilder
 {
     /// <summary>
     /// 单元格基类

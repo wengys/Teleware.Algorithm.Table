@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Dynamic;
-using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
+using Teleware.Algorithm.TableBuilder.BuildContext;
 
-namespace Teleware.Algorithm.TableBuilder.Shared
+namespace Teleware.Algorithm.TableBuilder
 {
     /// <summary>
     /// 聚合列定义基类

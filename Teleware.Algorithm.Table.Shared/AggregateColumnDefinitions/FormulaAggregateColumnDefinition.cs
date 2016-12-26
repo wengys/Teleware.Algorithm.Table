@@ -1,8 +1,8 @@
 ﻿using System;
-using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
-using Teleware.Algorithm.TableBuilder.Shared.Cells;
+using Teleware.Algorithm.TableBuilder.BuildContext;
+using Teleware.Algorithm.TableBuilder.Cells;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.AggregateColumnDefinitions
+namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
 {
     /// <summary>
     /// 公式聚合列定义

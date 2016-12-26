@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Teleware.Algorithm.TableBuilder.Shared.Rows;
+using Teleware.Algorithm.TableBuilder.Rows;
 
-namespace Teleware.Algorithm.TableBuilder.Shared
+namespace Teleware.Algorithm.TableBuilder
 {
     /// <summary>
     /// 表示一个公式

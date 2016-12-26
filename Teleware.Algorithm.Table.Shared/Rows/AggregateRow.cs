@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Teleware.Algorithm.TableBuilder.Shared.BuildContext;
+using Teleware.Algorithm.TableBuilder.BuildContext;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.Rows
+namespace Teleware.Algorithm.TableBuilder.Rows
 {
     /// <summary>
     /// 聚合行

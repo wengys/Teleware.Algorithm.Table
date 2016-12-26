@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Teleware.Algorithm.TableBuilder.Shared.AggregateColumnDefinitions;
-using Teleware.Algorithm.TableBuilder.Shared.DataColumnDefinitions;
+using Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions;
+using Teleware.Algorithm.TableBuilder.DataColumnDefinitions;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.Cells
+namespace Teleware.Algorithm.TableBuilder.Cells
 {
     /// <summary>
     /// 公式单元格
