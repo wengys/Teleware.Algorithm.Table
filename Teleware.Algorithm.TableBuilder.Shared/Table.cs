@@ -19,6 +19,15 @@ namespace Teleware.Algorithm.TableBuilder
         }
 
         /// <summary>
+        /// 初始化表格
+        /// </summary>
+        /// <param name="tableBody">表身</param>
+        public Table(TableBody tableBody)
+        {
+            TableBody = tableBody;
+        }
+
+        /// <summary>
         /// 表身
         /// </summary>
         public TableBody TableBody { get; set; }
@@ -30,9 +39,25 @@ namespace Teleware.Algorithm.TableBuilder
     }
 
     /// <summary>
+    /// 描述一个表中具有内容的区域
+    /// </summary>
+    public interface ITableContentSection
+    {
+        /// <summary>
+        /// 表行
+        /// </summary>
+        IList<Row> Rows { get; set; }
+
+        /// <summary>
+        /// 待合并单元格组
+        /// </summary>
+        IEnumerable<IEnumerable<CellReference>> MergeCellGroups { get; set; }
+    }
+
+    /// <summary>
     /// 表身
     /// </summary>
-    public class TableBody
+    public class TableBody : ITableContentSection
     {
         /// <summary>
         /// 初始化表身
@@ -59,7 +84,7 @@ namespace Teleware.Algorithm.TableBuilder
     /// <summary>
     /// 表头
     /// </summary>
-    public class TableHead
+    public class TableHead : ITableContentSection
     {
         /// <summary>
         /// 初始化表头

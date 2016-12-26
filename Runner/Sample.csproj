@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Sample</RootNamespace>
     <AssemblyName>Sample</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,13 +50,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Teleware.Algorithm.Table.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj">
+    <ProjectReference Include="..\Teleware.Algorithm.TableBuilder.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj">
       <Project>{41c4562f-fb21-4444-938c-2f040b17a61a}</Project>
       <Name>Teleware.Algorithm.TableBuilder.Shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Teleware.Algorithm.TableBodyBuilder\Teleware.Algorithm.TableBodyBuilder.csproj">
+    <ProjectReference Include="..\Teleware.Algorithm.TableBuilder.TableBodyBuilder\Teleware.Algorithm.TableBuilder.TableBodyBuilder.csproj">
       <Project>{b559712e-4825-4910-a993-ddb9d73122ff}</Project>
-      <Name>Teleware.Algorithm.TableBodyBuilder</Name>
+      <Name>Teleware.Algorithm.TableBuilder.TableBodyBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Teleware.Algorithm.TableRender.Json\Teleware.Algorithm.TableRender.Json.csproj">
+      <Project>{17b0c299-a581-45a2-b1b3-25c7fdc2e00e}</Project>
+      <Name>Teleware.Algorithm.TableRender.Json</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

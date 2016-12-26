@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Teleware.Algorithm.TableBodyBuilder;
 using Teleware.Algorithm.TableBuilder;
 using Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions;
 using Teleware.Algorithm.TableBuilder.ColumnFormulas;
 using Teleware.Algorithm.TableBuilder.DataColumnDefinitions;
 using Teleware.Algorithm.TableBuilder.RowDefinitions;
 using Teleware.Algorithm.TableBuilder.Rows;
+using Teleware.Algorithm.TableBuilder.TableBodyBuilder;
+using Teleware.Algorithm.TableRender.Json;
 
 namespace Sample
 {
@@ -63,14 +64,18 @@ namespace Sample
                .CreateBuilder();
 
             var body = builder.Build(null);
+            var table = new Table(null, body);
+
+            var render = new JsonTableRender();
+            var jTable = render.Render(table);
         }
 
         private class TestMergeCellsCollector : IMergeCellsCollector
         {
             public IEnumerable<Tuple<CellReference, CellReference>> Collect(IList<Row> rows)
             {
-                yield return Tuple.Create(new CellReference(3, 1), new CellReference(3, 2));
-                yield return Tuple.Create(new CellReference(3, 0), new CellReference(3, 1));
+                yield return Tuple.Create(new CellReference(2, 1), new CellReference(2, 2));
+                yield return Tuple.Create(new CellReference(2, 0), new CellReference(2, 1));
             }
         }
 

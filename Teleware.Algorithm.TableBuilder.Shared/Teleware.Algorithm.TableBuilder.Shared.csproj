@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B559712E-4825-4910-A993-DDB9D73122FF}</ProjectGuid>
+    <ProjectGuid>{41C4562F-FB21-4444-938C-2F040B17A61A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Teleware.Algorithm.TableBodyBuilder</RootNamespace>
-    <AssemblyName>Teleware.Algorithm.TableBodyBuilder</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Teleware.Algorithm.TableBuilder.Shared</RootNamespace>
+    <AssemblyName>Teleware.Algorithm.TableBuilder.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,37 +26,51 @@
     </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Teleware.Algorithm.TableBodyBuilder.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Teleware.Algorithm.TableBuilder.Shared.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IMergeCellsCollector.cs" />
-    <Compile Include="Impl\DefaultTableBodyBuilder.cs" />
-    <Compile Include="IRowDataPicker.cs" />
-    <Compile Include="ITableBodyBuilder.cs" />
+    <Compile Include="AggregateColumnDefinition.cs" />
+    <Compile Include="AggregateColumnDefinitions\FormulaAggregateColumnDefinition.cs" />
+    <Compile Include="AggregateColumnDefinitions\TextAggregateColumnDefinition.cs" />
+    <Compile Include="BuildContext\AggregateRowBuildContext.cs" />
+    <Compile Include="Cell.cs" />
+    <Compile Include="Cells\EmptyCell.cs" />
+    <Compile Include="Cells\FormulaCell.cs" />
+    <Compile Include="Cells\ReferenceCell.cs" />
+    <Compile Include="Cells\StaticTextCell.cs" />
+    <Compile Include="DataColumnDefinition.cs" />
+    <Compile Include="DataColumnDefinitions\FormulaColumnDefinition.cs" />
+    <Compile Include="DataColumnDefinitions\ReferenceColumnDefinition.cs" />
+    <Compile Include="ColumnFormulas\SumRefKeysFormula.cs" />
+    <Compile Include="IColumnFormula.cs" />
+    <Compile Include="CellReference.cs" />
+    <Compile Include="RowDefinitions\AggregateRowDefinition.cs" />
+    <Compile Include="Rows\DataRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TableBodyBuilderConfiguration.cs" />
+    <Compile Include="Row.cs" />
+    <Compile Include="BuildContext\DataRowBuildContext.cs" />
+    <Compile Include="Table.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Teleware.Algorithm.Table.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj">
-      <Project>{41c4562f-fb21-4444-938c-2f040b17a61a}</Project>
-      <Name>Teleware.Algorithm.TableBuilder.Shared</Name>
-    </ProjectReference>
+    <Compile Include="Rows\AggregateRow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="RowDefinitions\DataRowDefinition.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

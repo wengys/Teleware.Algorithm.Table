@@ -9,7 +9,7 @@ using Teleware.Algorithm.TableBuilder.Cells;
 using Teleware.Algorithm.TableBuilder.RowDefinitions;
 using Teleware.Algorithm.TableBuilder.Rows;
 
-namespace Teleware.Algorithm.TableBodyBuilder.Impl
+namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
 {
     /// <summary>
     /// 表身生成器实例

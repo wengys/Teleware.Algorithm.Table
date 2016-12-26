@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Teleware.Algorithm.TableBodyBuilder.Impl;
 using Teleware.Algorithm.TableBuilder;
 using Teleware.Algorithm.TableBuilder.RowDefinitions;
+using Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl;
 
-namespace Teleware.Algorithm.TableBodyBuilder
+namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder
 {
     /// <summary>
     /// 表身生成器配置

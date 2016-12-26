@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder;
 
-namespace Teleware.Algorithm.TableBodyBuilder
+namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder
 {
     /// <summary>
     /// 定义一个表身生成器
