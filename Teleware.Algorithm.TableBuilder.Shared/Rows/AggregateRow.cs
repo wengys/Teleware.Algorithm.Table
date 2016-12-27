@@ -25,5 +25,7 @@ namespace Teleware.Algorithm.TableBuilder.Rows
         /// 行创建上下文
         /// </summary>
         public AggregateRowBuildContext RowBuildContext { get; set; }
+
+        public override RowTypes RowType { get; } = RowTypes.AggregateRow;
     }
 }

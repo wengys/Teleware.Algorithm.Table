@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Teleware.Algorithm.TableBuilder.BuildContext;
 
 namespace Teleware.Algorithm.TableBuilder.Rows
@@ -25,5 +26,7 @@ namespace Teleware.Algorithm.TableBuilder.Rows
         /// 行创建上下文
         /// </summary>
         public DataRowBuildContext RowBuildContext { get; }
+
+        public override RowTypes RowType { get; } = RowTypes.DataRow;
     }
 }

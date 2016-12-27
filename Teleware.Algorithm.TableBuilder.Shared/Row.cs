@@ -27,5 +27,14 @@ namespace Teleware.Algorithm.TableBuilder
         /// 扩展元数据
         /// </summary>
         public dynamic Metadata { get; }
+
+        public abstract RowTypes RowType { get; }
+    }
+
+    public enum RowTypes
+    {
+        AggregateRow = 1,
+        DataRow = 2,
+        Any = AggregateRow | DataRow
     }
 }

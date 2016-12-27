@@ -80,11 +80,18 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder
         /// <summary>
         /// 设置合并列采集器
         /// </summary>
-        /// <param name="mergeCellsCollector">合并列采集器实例</param>
+        /// <param name="mergeCellsCollectors">多个合并列采集器实例</param>
         /// <returns></returns>
-        public TableBodyBuilderConfiguration SetMergeCellsCollector(IMergeCellsCollector mergeCellsCollector)
+        public TableBodyBuilderConfiguration SetMergeCellsCollectors(params IMergeCellsCollector[] mergeCellsCollectors)
         {
-            this._mergeCellsCollector = mergeCellsCollector;
+            if (mergeCellsCollectors.Length == 1)
+            {
+                this._mergeCellsCollector = mergeCellsCollectors[0];
+            }
+            else
+            {
+                this._mergeCellsCollector = new AggregateMergeCellsCollector(mergeCellsCollectors);
+            }
             return this;
         }
 

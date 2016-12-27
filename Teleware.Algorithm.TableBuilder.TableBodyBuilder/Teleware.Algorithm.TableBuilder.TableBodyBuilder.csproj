@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\AggregateMergeCellsCollector.cs" />
     <Compile Include="IMergeCellsCollector.cs" />
     <Compile Include="Impl\DefaultTableBodyBuilder.cs" />
     <Compile Include="IRowDataPicker.cs" />

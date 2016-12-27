@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="Program2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +66,7 @@
       <Name>Teleware.Algorithm.TableBuilder.TableBodyBuilder</Name>
     </ProjectReference>
     <ProjectReference Include="..\Teleware.Algorithm.TableRender.Excel\Teleware.Algorithm.TableRender.Excel.csproj">
-      <Project>{FF4CE0AA-54E8-4E8B-B45C-431368414E87}</Project>
+      <Project>{ff4ce0aa-54e8-4e8b-b45c-431368414e87}</Project>
       <Name>Teleware.Algorithm.TableRender.Excel</Name>
     </ProjectReference>
     <ProjectReference Include="..\Teleware.Algorithm.TableRender.Json\Teleware.Algorithm.TableRender.Json.csproj">
