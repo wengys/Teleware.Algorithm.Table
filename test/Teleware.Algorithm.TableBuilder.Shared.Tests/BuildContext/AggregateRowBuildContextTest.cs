@@ -1,6 +1,7 @@
 ﻿using FakeItEasy;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,8 +69,28 @@ namespace Teleware.Algorithm.TableBuilder.Shared.Tests.BuildContext
             Assert.Same(expectedDecoratedRow, decoratedRow);
         }
 
+        [Fact]
+        public void BindToDataRowsTest()
+        {
+            var expectedName = "TEST";
+            var rowDefinition = new TestAggregationRowDefinition(expectedName, null, null, null);
+            var dataRowContext = new DataRowBuildContext(null, null, 0);
+            var dataRow = new TestDataRow(dataRowContext);
+            var context = new AggregateRowBuildContext(rowDefinition, null, new DataRow[] { dataRow }, 0);
+
+            Assert.True(dataRowContext.RelatedAggregateRowContext.ContainsKey(expectedName));
+            Assert.NotNull(dataRowContext.RelatedAggregateRowContext[expectedName]);
+        }
+
         private class TestCell : Cell
         {
+        }
+
+        private class TestDataRow : DataRow
+        {
+            public TestDataRow(DataRowBuildContext rowBuildContext) : base(null, rowBuildContext)
+            {
+            }
         }
 
         private class TestAggregationColumnDefnition : AggregateColumnDefinition
@@ -91,6 +112,14 @@ namespace Teleware.Algorithm.TableBuilder.Shared.Tests.BuildContext
             }
 
             public TestAggregationRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns) : base("", aggregateKeySelector, columns)
+            {
+            }
+
+            public TestAggregationRowDefinition(string name, Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns, Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator) : base(name, aggregateKeySelector, columns, rowDecorator)
+            {
+            }
+
+            public TestAggregationRowDefinition(string name, Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns) : base(name, aggregateKeySelector, columns)
             {
             }
         }
