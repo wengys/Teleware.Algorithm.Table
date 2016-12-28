@@ -15,7 +15,7 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
     /// <see cref="AggregateRow"/>
     public class AggregateRowDefinition
     {
-        private static Func<AggregateRow, AggregateRowBuildContext, AggregateRow> _id = (r, ctx) => r;
+        private static readonly Func<AggregateRow, AggregateRowBuildContext, AggregateRow> _id = (r, ctx) => r;
 
         /// <summary>
         /// 初始化新聚合行定义

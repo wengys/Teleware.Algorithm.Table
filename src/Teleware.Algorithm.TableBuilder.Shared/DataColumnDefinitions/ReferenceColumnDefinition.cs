@@ -12,10 +12,9 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
     /// </remarks>
     public class ReferenceColumnDefinition : DataColumnDefinition
     {
-        private static Func<dynamic, dynamic> _id = a => a;
+        private static readonly Func<dynamic, dynamic> _id = a => a;
 
-        private string _columnText;
-        private Func<dynamic, dynamic> _valueMapper;
+        private readonly Func<dynamic, dynamic> _valueMapper;
 
         /// <summary>
         /// 初始化新引用列定义
@@ -71,7 +70,7 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
             Func<Cell, DataRowBuildContext, Cell> cellDecorator
             ) : base(cellDecorator)
         {
-            _columnText = columnText;
+            ColumnText = columnText;
             RefKey = refKey;
             _valueMapper = valueMapper ?? _id;
         }
@@ -87,13 +86,7 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
         /// <summary>
         /// 列头
         /// </summary>
-        public override string ColumnText
-        {
-            get
-            {
-                return _columnText;
-            }
-        }
+        public override string ColumnText { get; }
 
         /// <see cref="DataColumnDefinition.BuildCell(DataRowBuildContext)"/>
         protected override Cell BuildCell(DataRowBuildContext context)

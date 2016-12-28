@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02898837-01B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{86F17B0E-DD04-4D0E-B59D-9E9C48B8AE07}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{48DF8E22-088F-4CBC-AA84-B2A25C952A83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableBuilder.Shared.Tests", "test\Teleware.Algorithm.TableBuilder.Shared.Tests\Teleware.Algorithm.TableBuilder.Shared.Tests.csproj", "{5DE40281-54F0-41EE-A621-EE528CBC15CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DE40281-54F0-41EE-A621-EE528CBC15CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DE40281-54F0-41EE-A621-EE528CBC15CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DE40281-54F0-41EE-A621-EE528CBC15CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DE40281-54F0-41EE-A621-EE528CBC15CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +68,6 @@ Global
 		{17B0C299-A581-45A2-B1B3-25C7FDC2E00E} = {02898837-01B3-480B-8D47-45F75117DA92}
 		{FF4CE0AA-54E8-4E8B-B45C-431368414E87} = {02898837-01B3-480B-8D47-45F75117DA92}
 		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8} = {02898837-01B3-480B-8D47-45F75117DA92}
+		{5DE40281-54F0-41EE-A621-EE528CBC15CD} = {48DF8E22-088F-4CBC-AA84-B2A25C952A83}
 	EndGlobalSection
 EndGlobal

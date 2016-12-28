@@ -65,10 +65,15 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
         /// 返回单元格对应列定义
         /// </summary>
         /// <param name="cell"></param>
-        /// <returns></returns>
+        /// <returns>如果没有单元格注册记录，则返回null</returns>
         public AggregateColumnDefinition GetCellDefinition(Cell cell)
         {
-            return _cellDefMapping[cell];
+            AggregateColumnDefinition colDef;
+            if (_cellDefMapping.TryGetValue(cell, out colDef))
+            {
+                return colDef;
+            }
+            return null;
         }
 
         /// <summary>

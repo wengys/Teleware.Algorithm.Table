@@ -12,7 +12,7 @@ namespace Teleware.Algorithm.TableBuilder
         /// 初始化
         /// </summary>
         /// <param name="cells">此行相关的单元格</param>
-        public Row(IList<Cell> cells)
+        protected Row(IList<Cell> cells)
         {
             Cells = cells;
             Metadata = new ExpandoObject();
@@ -27,14 +27,5 @@ namespace Teleware.Algorithm.TableBuilder
         /// 扩展元数据
         /// </summary>
         public dynamic Metadata { get; }
-
-        //public abstract RowTypes RowType { get; }
     }
-
-    //public enum RowTypes
-    //{
-    //    AggregateRow = 1,
-    //    DataRow = 2,
-    //    Any = AggregateRow | DataRow
-    //}
 }

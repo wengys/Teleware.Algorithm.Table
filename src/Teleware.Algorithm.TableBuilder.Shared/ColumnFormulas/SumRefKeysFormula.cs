@@ -11,7 +11,7 @@ namespace Teleware.Algorithm.TableBuilder.ColumnFormulas
     public class SumRefKeysFormula<TValue> : IFormula
         where TValue : struct
     {
-        private static Func<dynamic, TValue?> _id = v => (TValue?)v;
+        private static readonly Func<dynamic, TValue?> _id = v => (TValue?)v;
 
         /// <summary>
         /// 初始化公式

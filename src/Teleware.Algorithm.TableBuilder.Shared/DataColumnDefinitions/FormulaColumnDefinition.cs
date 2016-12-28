@@ -12,8 +12,6 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
     /// </remarks>
     public class FormulaColumnDefinition : DataColumnDefinition
     {
-        private string _columnText;
-
         /// <summary>
         /// 初始化公式列定义
         /// </summary>
@@ -36,7 +34,7 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
             IFormula formula,
             Func<Cell, DataRowBuildContext, Cell> cellDecorator) : base(cellDecorator)
         {
-            _columnText = columnText;
+            ColumnText = columnText;
             Formula = formula;
         }
 
@@ -48,13 +46,7 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
         /// <summary>
         /// 列头
         /// </summary>
-        public override string ColumnText
-        {
-            get
-            {
-                return _columnText;
-            }
-        }
+        public override string ColumnText { get; }
 
         /// <see cref="DataColumnDefinition.BuildCell(DataRowBuildContext)"/>
         protected override Cell BuildCell(DataRowBuildContext context)

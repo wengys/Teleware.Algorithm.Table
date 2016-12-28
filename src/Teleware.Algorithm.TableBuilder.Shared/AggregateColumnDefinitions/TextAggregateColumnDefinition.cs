@@ -51,7 +51,7 @@ namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
         /// <param name="cellDecorator">单元格装饰器</param>
         public TextAggregateColumnDefinition(int colNum, string text, Func<Cell, AggregateRowBuildContext, Cell> cellDecorator) : base(colNum, cellDecorator)
         {
-            this._textGetter = (ctx) => string.Format(text, ctx.AggregateKey, ctx.RowIndex, ctx.AggregateKey);
+            this._textGetter = (ctx) => string.Format(text, ctx.AggregateKey, ctx.RowIndex, ctx.AggregateRowIndex);
         }
 
         /// <see cref="AggregateColumnDefinition.BuildCell(AggregateRowBuildContext)"/>

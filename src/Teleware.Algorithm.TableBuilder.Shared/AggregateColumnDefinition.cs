@@ -16,7 +16,7 @@ namespace Teleware.Algorithm.TableBuilder
         /// </summary>
         /// <param name="colNum">列所在坐标</param>
         /// <param name="cellDecorator">单元格装饰器，用于修饰此列生成的单元格</param>
-        public AggregateColumnDefinition(int colNum, Func<Cell, AggregateRowBuildContext, Cell> cellDecorator)
+        protected AggregateColumnDefinition(int colNum, Func<Cell, AggregateRowBuildContext, Cell> cellDecorator)
         {
             Metadata = new ExpandoObject();
             ColNum = colNum;

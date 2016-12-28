@@ -10,7 +10,7 @@ namespace Teleware.Algorithm.TableBuilder
         /// <summary>
         /// 初始化单元格
         /// </summary>
-        public Cell()
+        protected Cell()
         {
             Metadata = new ExpandoObject();
         }
