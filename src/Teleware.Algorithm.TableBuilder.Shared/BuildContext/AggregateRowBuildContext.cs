@@ -39,6 +39,16 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
             RowsToAggregate = rowsToAggregate;
             AggregateKey = aggregateKey;
             AggregateRowIndex = aggregateRowIndex;
+
+            BindToDataRows(aggregateRowDefinition, rowsToAggregate);
+        }
+
+        private void BindToDataRows(AggregateRowDefinition aggregateRowDefinition, IEnumerable<DataRow> rowsToAggregate)
+        {
+            foreach (var dataRow in rowsToAggregate)
+            {
+                dataRow.RowBuildContext.RelatedAggregateRowContext[aggregateRowDefinition.Name] = this;
+            }
         }
 
         /// <summary>

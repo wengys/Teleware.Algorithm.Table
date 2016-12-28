@@ -14,7 +14,7 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
     /// <seealso cref="DataRow"/>
     public class DataRowDefinition
     {
-        private static Func<DataRow, DataRowBuildContext, DataRow> _id = (r, ctx) => r;
+        private static readonly Func<DataRow, DataRowBuildContext, DataRow> _id = (r, ctx) => r;
 
         /// <summary>
         /// 初始化新数据行定义
@@ -33,7 +33,6 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
         /// <param name="columns">行所包括的列定义</param>
         public DataRowDefinition(IEnumerable<DataColumnDefinition> columns) : this(columns, null)
         {
-            Columns = columns;
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace Teleware.Algorithm.TableBuilder
     /// </summary>
     public abstract class AggregateColumnDefinition
     {
-        private static Func<Cell, AggregateRowBuildContext, Cell> _id = (c, ctx) => c;
+        private static readonly Func<Cell, AggregateRowBuildContext, Cell> _id = (c, ctx) => c;
 
         /// <summary>
         /// 初始化聚合列

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Teleware.Algorithm.TableBuilder.BuildContext;
 using Teleware.Algorithm.TableBuilder.Cells;
+using Teleware.Algorithm.TableBuilder.Rows;
+using Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas;
 
 namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
 {
@@ -57,7 +60,7 @@ namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
         /// <see cref="AggregateColumnDefinition.BuildCell(AggregateRowBuildContext)"/>
         protected override Cell BuildCell(AggregateRowBuildContext context)
         {
-            return new StaticTextCell(_textGetter(context));
+            return new FormulaCell(new TextAggregateColumnFormula(_textGetter, context));
         }
     }
 }

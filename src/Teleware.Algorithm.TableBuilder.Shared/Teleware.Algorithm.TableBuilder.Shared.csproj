@@ -53,6 +53,7 @@
     <Compile Include="Cells\FormulaCell.cs" />
     <Compile Include="Cells\ReferenceCell.cs" />
     <Compile Include="Cells\StaticTextCell.cs" />
+    <Compile Include="ColumnFormulas\TextAggregateColumnFormula.cs" />
     <Compile Include="DataColumnDefinition.cs" />
     <Compile Include="DataColumnDefinitions\FormulaColumnDefinition.cs" />
     <Compile Include="DataColumnDefinitions\ReferenceColumnDefinition.cs" />

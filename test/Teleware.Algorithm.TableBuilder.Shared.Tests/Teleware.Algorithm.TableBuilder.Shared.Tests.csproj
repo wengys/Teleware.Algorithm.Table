@@ -72,6 +72,7 @@
     <Compile Include="AggregateColumnDefinitions\TextAggregateColumnDefinitionTest.cs" />
     <Compile Include="BuildContext\DataRowBuildContextTest.cs" />
     <Compile Include="BuildContext\AggregateRowBuildContextTest.cs" />
+    <Compile Include="CellReferenceTests.cs" />
     <Compile Include="ColumnFormulas\SumRefKeysFormulaTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

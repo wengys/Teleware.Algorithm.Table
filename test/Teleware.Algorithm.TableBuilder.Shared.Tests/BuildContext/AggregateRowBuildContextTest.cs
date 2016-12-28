@@ -86,11 +86,11 @@ namespace Teleware.Algorithm.TableBuilder.Shared.Tests.BuildContext
 
         private class TestAggregationRowDefinition : AggregateRowDefinition
         {
-            public TestAggregationRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns, Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator) : base(aggregateKeySelector, columns, rowDecorator)
+            public TestAggregationRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns, Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator) : base("", aggregateKeySelector, columns, rowDecorator)
             {
             }
 
-            public TestAggregationRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns) : base(aggregateKeySelector, columns)
+            public TestAggregationRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns) : base("", aggregateKeySelector, columns)
             {
             }
         }

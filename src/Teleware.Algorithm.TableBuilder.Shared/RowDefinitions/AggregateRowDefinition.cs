@@ -20,11 +20,13 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
         /// <summary>
         /// 初始化新聚合行定义
         /// </summary>
+        /// <param name="aggregateRowDefinitionName">聚合列定义名，聚合列列表内唯一</param>
         /// <param name="aggregateKeySelector">聚合键生成器, 参见<see cref="AggregateKeySelector"/></param>
         /// <param name="columns">聚合行中的聚合列定义</param>
         /// <param name="rowDecorator">行装饰器</param>
-        public AggregateRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns, Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator)
+        public AggregateRowDefinition(string aggregateRowDefinitionName, Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns, Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator)
         {
+            Name = aggregateRowDefinitionName;
             AggregateKeySelector = aggregateKeySelector;
             Columns = columns;
             RowDecorator = rowDecorator ?? _id;
@@ -33,12 +35,18 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
         /// <summary>
         /// 初始化新聚合行定义
         /// </summary>
+        /// <param name="aggregateRowDefinitionName">聚合列定义名，聚合列列表内唯一</param>
         /// <param name="aggregateKeySelector">聚合键生成器, 参见<see cref="AggregateKeySelector"/></param>
         /// <param name="columns">聚合行中的聚合列定义</param>
-        public AggregateRowDefinition(Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns)
-            : this(aggregateKeySelector, columns, null)
+        public AggregateRowDefinition(string aggregateRowDefinitionName, Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns)
+            : this(aggregateRowDefinitionName, aggregateKeySelector, columns, null)
         {
         }
+
+        /// <summary>
+        /// 聚合列定义名
+        /// </summary>
+        public string Name { get; set; }
 
         /// <summary>
         /// 聚合键生成器

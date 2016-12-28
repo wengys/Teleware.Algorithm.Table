@@ -52,6 +52,11 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder
         public TableBodyBuilderConfiguration SetAggregateRowsDefinition(params AggregateRowDefinition[] aggregateRows)
         {
             this._aggregateRows = aggregateRows;
+            var isDumpName = aggregateRows.GroupBy(ar => ar.Name).Select(g => g.Count()).Any(c => c > 1);
+            if (isDumpName)
+            {
+                throw new ArgumentException("发现重复聚合列定义名");
+            }
             return this;
         }
 
@@ -63,6 +68,11 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder
         public TableBodyBuilderConfiguration SetAggregateRowsDefinition(IEnumerable<AggregateRowDefinition> aggregateRows)
         {
             this._aggregateRows = aggregateRows;
+            var isDumpName = aggregateRows.GroupBy(ar => ar.Name).Select(g => g.Count()).Any(c => c > 1);
+            if (isDumpName)
+            {
+                throw new ArgumentException("发现重复聚合列定义名");
+            }
             return this;
         }
 

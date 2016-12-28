@@ -147,20 +147,14 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
                 dr.RowBuildContext.RowIndex = rowIndex;//设置行号
                 foreach (var cell in dr.Cells)
                 {
-                    if (cell is FormulaCell)
-                    {
-                        (cell as FormulaCell).ExecuteFormula(new[] { (DataRow)row });
-                    }
+                    (cell as FormulaCell)?.ExecuteFormula(new[] { (DataRow)row });
                 }
             }, (ar) =>
             {
                 ar.RowBuildContext.RowIndex = rowIndex;//设置行号
                 foreach (var cell in ar.Cells)
                 {
-                    if (cell is FormulaCell)
-                    {
-                        (cell as FormulaCell).ExecuteFormula(((AggregateRow)row).RowBuildContext.RowsToAggregate);
-                    }
+                    (cell as FormulaCell)?.ExecuteFormula(((AggregateRow)row).RowBuildContext.RowsToAggregate);
                 }
             });
         }

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions;
 using Teleware.Algorithm.TableBuilder.BuildContext;
+using Teleware.Algorithm.TableBuilder.Cells;
 using Teleware.Algorithm.TableBuilder.RowDefinitions;
 using Teleware.Algorithm.TableBuilder.Rows;
 using Xunit;
@@ -28,7 +29,8 @@ namespace Teleware.Algorithm.TableBuilder.Shared.Tests.AggregateColumnDefinition
 
             var expected = string.Format(stringTemplate, aggregateKey, rowIndex, aggregateRowIndex);
 
-            var cell = definition.CreateCell(context);
+            var cell = (FormulaCell)definition.CreateCell(context);
+            cell.ExecuteFormula(Enumerable.Empty<DataRow>());
 
             Assert.Equal(expected, cell.Value);
         }

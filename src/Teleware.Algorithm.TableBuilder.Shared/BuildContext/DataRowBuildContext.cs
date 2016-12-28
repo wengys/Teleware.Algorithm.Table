@@ -22,6 +22,7 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
             Datas = rowDatas;
             Definition = definition;
             DataRowIndex = dataRowIndex;
+            RelatedAggregateRowContext = new Dictionary<string, AggregateRowBuildContext>();
         }
 
         /// <summary>
@@ -43,6 +44,11 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
         /// 行数据
         /// </summary>
         public IDictionary<string, dynamic> Datas { get; }
+
+        /// <summary>
+        /// 与本行关联的聚合列创建上下文
+        /// </summary>
+        public IDictionary<string, AggregateRowBuildContext> RelatedAggregateRowContext { get; set; }
 
         /// <summary>
         /// 根据键获取列数据
