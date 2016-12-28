@@ -227,7 +227,7 @@ namespace Sample
                 var rowData = new Dictionary<string, dynamic>();
                 foreach (var property in _properties)
                 {
-                    var value = property.GetValue(obj);
+                    var value = property.GetGetMethod().Invoke(obj, null);
                     rowData.Add(property.Name, value);
                 }
                 _onRowDataPicked?.Invoke(new RowDataPickedEventArgs
