@@ -28,13 +28,13 @@ namespace Teleware.Algorithm.TableBuilder
         /// </summary>
         public dynamic Metadata { get; }
 
-        public abstract RowTypes RowType { get; }
+        //public abstract RowTypes RowType { get; }
     }
 
-    public enum RowTypes
-    {
-        AggregateRow = 1,
-        DataRow = 2,
-        Any = AggregateRow | DataRow
-    }
+    //public enum RowTypes
+    //{
+    //    AggregateRow = 1,
+    //    DataRow = 2,
+    //    Any = AggregateRow | DataRow
+    //}
 }

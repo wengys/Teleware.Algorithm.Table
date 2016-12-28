@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableRen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableRender.Excel", "Teleware.Algorithm.TableRender.Excel\Teleware.Algorithm.TableRender.Excel.csproj", "{FF4CE0AA-54E8-4E8B-B45C-431368414E87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableBuilder.PowerTools", "Teleware.Algorithm.TableBuilder.PowerTools\Teleware.Algorithm.TableBuilder.PowerTools.csproj", "{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

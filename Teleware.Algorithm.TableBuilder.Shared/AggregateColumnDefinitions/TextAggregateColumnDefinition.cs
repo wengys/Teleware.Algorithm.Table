@@ -27,7 +27,7 @@ namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
         /// 初始化新文本聚合列
         /// </summary>
         /// <param name="colNum">列坐标（从0开始）</param>
-        /// <param name="text">列静态文本</param>
+        /// <param name="text">列静态文本（支持以分组键为唯一参数的格式字符串）</param>
         public TextAggregateColumnDefinition(int colNum, string text) : this(colNum, text, null)
         {
         }
@@ -47,11 +47,11 @@ namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
         /// 初始化新文本聚合列
         /// </summary>
         /// <param name="colNum">列坐标（从0开始）</param>
-        /// <param name="text">列静态文本</param>
+        /// <param name="text">列静态文本（支持以分组键为唯一参数的格式字符串）</param>
         /// <param name="cellDecorator">单元格装饰器</param>
         public TextAggregateColumnDefinition(int colNum, string text, Func<Cell, AggregateRowBuildContext, Cell> cellDecorator) : base(colNum, cellDecorator)
         {
-            this._textGetter = (ctx) => text;
+            this._textGetter = (ctx) => string.Format(text, ctx.AggregateKey);
         }
 
         /// <see cref="AggregateColumnDefinition.BuildCell(AggregateRowBuildContext)"/>
