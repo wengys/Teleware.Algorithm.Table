@@ -9,18 +9,30 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
     /// </summary>
     public class DataRowBuildContext
     {
-        private Dictionary<Cell, DataColumnDefinition> _cellDefMapping = new Dictionary<Cell, DataColumnDefinition>();
+        private readonly Dictionary<Cell, DataColumnDefinition> _cellDefMapping = new Dictionary<Cell, DataColumnDefinition>();
 
         /// <summary>
         /// 初始化上下文
         /// </summary>
         /// <param name="definition">行定义</param>
         /// <param name="rowDatas">行数据</param>
-        public DataRowBuildContext(DataRowDefinition definition, IDictionary<string, dynamic> rowDatas)
+        /// <param name="dataRowIndex">数据行号</param>
+        public DataRowBuildContext(DataRowDefinition definition, IDictionary<string, dynamic> rowDatas, int dataRowIndex)
         {
             Datas = rowDatas;
             Definition = definition;
+            DataRowIndex = dataRowIndex;
         }
+
+        /// <summary>
+        /// 数据行号
+        /// </summary>
+        public int DataRowIndex { get; set; }
+
+        /// <summary>
+        /// 行号
+        /// </summary>
+        public int RowIndex { get; set; }
 
         /// <summary>
         /// 行定义

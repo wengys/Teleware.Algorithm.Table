@@ -17,10 +17,10 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
 
     internal class DefaultTableBodyBuilder : ITableBodyBuilder
     {
-        private IRowDataPicker _picker;
-        private IMergeCellsCollector _mergeCellsCollector;
-        private IEnumerable<AggregateRowDefinition> _aggregateRows;
-        private DataRowDefinition _dataRow;
+        private readonly IRowDataPicker _picker;
+        private readonly IMergeCellsCollector _mergeCellsCollector;
+        private readonly IEnumerable<AggregateRowDefinition> _aggregateRows;
+        private readonly DataRowDefinition _dataRow;
 
         public DefaultTableBodyBuilder(
             IRowDataPicker picker,
@@ -43,7 +43,7 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
             for (int i = 0; i < body.Count; i++) // 以下合并公式计算与行列装饰的循环，很惭愧，就优化了点微小的性能
             {
                 var row = body[i];
-                EvalFormulaCells(row);
+                EvalFormulaCells(row, i);
                 body[i] = DecorateRowAndCells(row);
             }
             var mergeCellGroups = CollectMergeCellGroups(body);
@@ -88,6 +88,7 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
                 var firstRow = true;
                 string lastKey = null;
                 var rowsToAggregate = new List<Tuple<int, DataRow>>();
+                var aggregateRowIndex = 0;
                 for (var i = 0; i < body.Count; i++)
                 {
                     var row = (DataRow)body[i];
@@ -104,7 +105,8 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
                     }
                     else if (lastKey != key)
                     {
-                        var aggregateRowTuple = CreateAggregateRow(lastKey, aggregateRowDef, rowsToAggregate);
+                        var aggregateRowTuple = CreateAggregateRow(lastKey, aggregateRowDef, rowsToAggregate, aggregateRowIndex);
+                        aggregateRowIndex++;
                         aggregateRows.Add(aggregateRowTuple);
                         rowsToAggregate.Clear();
                         lastKey = key;
@@ -113,7 +115,7 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
                 }
                 if (rowsToAggregate.Count > 0)
                 {
-                    var aggregateRowTuple = CreateAggregateRow(lastKey, aggregateRowDef, rowsToAggregate);
+                    var aggregateRowTuple = CreateAggregateRow(lastKey, aggregateRowDef, rowsToAggregate, aggregateRowIndex);
                     aggregateRows.Add(aggregateRowTuple);
                 }
             }
@@ -121,13 +123,13 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
             return aggregateRows.OrderBy(t => t.Item1).ToList();
         }
 
-        private Tuple<int, AggregateRow> CreateAggregateRow(string lastKey, AggregateRowDefinition aggregateRowDef, List<Tuple<int, DataRow>> rowsToAggregate)
+        private Tuple<int, AggregateRow> CreateAggregateRow(string lastKey, AggregateRowDefinition aggregateRowDef, List<Tuple<int, DataRow>> rowsToAggregate, int aggregateRowIndex)
         {
             var rowNum = rowsToAggregate[rowsToAggregate.Count - 1].Item1 + 1;
             var cellCount = rowsToAggregate.First().Item2.Cells.Count;
 
             var cells = Enumerable.Repeat<Cell>(EmptyCell.Singleton, cellCount).ToList();
-            var aggregateBuildContext = new AggregateRowBuildContext(aggregateRowDef, lastKey, rowsToAggregate.Select(ra => ra.Item2).ToArray());
+            var aggregateBuildContext = new AggregateRowBuildContext(aggregateRowDef, lastKey, rowsToAggregate.Select(ra => ra.Item2).ToArray(), aggregateRowIndex);
 
             foreach (var column in aggregateRowDef.Columns)
             {
@@ -138,10 +140,11 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
             return Tuple.Create(rowNum, new AggregateRow(cells, aggregateBuildContext));
         }
 
-        private void EvalFormulaCells(Row row)
+        private void EvalFormulaCells(Row row, int rowIndex)
         {
             VisitRowByType(row, (dr) =>
             {
+                dr.RowBuildContext.RowIndex = rowIndex;//设置行号
                 foreach (var cell in dr.Cells)
                 {
                     if (cell is FormulaCell)
@@ -151,6 +154,7 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
                 }
             }, (ar) =>
             {
+                ar.RowBuildContext.RowIndex = rowIndex;//设置行号
                 foreach (var cell in ar.Cells)
                 {
                     if (cell is FormulaCell)
@@ -163,9 +167,9 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
 
         private IList<Row> CreateBody(IDictionary<string, dynamic>[] rowDatas)
         {
-            var body = rowDatas.Select(rd =>
+            var body = rowDatas.Select((rd, dataRowIndex) =>
             {
-                var rowBuildContext = new DataRowBuildContext(_dataRow, rd);
+                var rowBuildContext = new DataRowBuildContext(_dataRow, rd, dataRowIndex);
                 var rowColumns = _dataRow.Columns.Select(colDef =>
                 {
                     return colDef.CreateCell(rowBuildContext);

@@ -9,7 +9,7 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
     /// </summary>
     public class AggregateRowBuildContext
     {
-        private Dictionary<Cell, AggregateColumnDefinition> _cellDefMapping = new Dictionary<Cell, AggregateColumnDefinition>();
+        private readonly Dictionary<Cell, AggregateColumnDefinition> _cellDefMapping = new Dictionary<Cell, AggregateColumnDefinition>();
 
         /// <summary>
         /// 将要用于聚合计算的数据行
@@ -32,12 +32,24 @@ namespace Teleware.Algorithm.TableBuilder.BuildContext
         /// <param name="aggregateRowDefinition">行定义</param>
         /// <param name="aggregateKey">聚合键</param>
         /// <param name="rowsToAggregate">将要用于聚合计算的数据行</param>
-        public AggregateRowBuildContext(AggregateRowDefinition aggregateRowDefinition, string aggregateKey, IEnumerable<DataRow> rowsToAggregate)
+        /// <param name="aggregateRowIndex">聚合行号</param>
+        public AggregateRowBuildContext(AggregateRowDefinition aggregateRowDefinition, string aggregateKey, IEnumerable<DataRow> rowsToAggregate, int aggregateRowIndex)
         {
             Definition = aggregateRowDefinition;
             RowsToAggregate = rowsToAggregate;
             AggregateKey = aggregateKey;
+            AggregateRowIndex = aggregateRowIndex;
         }
+
+        /// <summary>
+        /// 聚合行号
+        /// </summary>
+        public int AggregateRowIndex { get; set; }
+
+        /// <summary>
+        /// 行号
+        /// </summary>
+        public int RowIndex { get; set; }
 
         /// <summary>
         /// 注册单元格
