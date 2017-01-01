@@ -18,7 +18,6 @@ namespace Teleware.Algorithm.TableBuilder
         /// <param name="cellDecorator">单元格装饰器，用于修饰此列生成的单元格</param>
         protected AggregateColumnDefinition(int colNum, Func<Cell, AggregateRowBuildContext, Cell> cellDecorator)
         {
-            Metadata = new ExpandoObject();
             ColNum = colNum;
             CellDecorator = cellDecorator ?? _id;
         }
@@ -27,11 +26,6 @@ namespace Teleware.Algorithm.TableBuilder
         /// 列坐标（从0开始）
         /// </summary>
         public int ColNum { get; }
-
-        /// <summary>
-        /// 扩展元数据
-        /// </summary>
-        public dynamic Metadata { get; }
 
         /// <summary>
         /// 单元格装饰器

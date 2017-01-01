@@ -96,8 +96,8 @@ namespace Teleware.Algorithm.TableBuilder.DataColumnDefinitions
             {
                 return EmptyCell.Singleton;
             }
-            var column = new ReferenceCell(_valueMapper(data), data);
-            return column;
+            var cell = new ReferenceCell(_valueMapper(data), data);
+            return cell;
         }
     }
 }

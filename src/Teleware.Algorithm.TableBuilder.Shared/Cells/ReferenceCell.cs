@@ -12,10 +12,10 @@ namespace Teleware.Algorithm.TableBuilder.Cells
         /// 初始化引用列
         /// </summary>
         /// <param name="value">单元格值</param>
-        /// <param name="data">单元格原始数据</param>
+        /// <param name="rawData">单元格原始数据</param>
         public ReferenceCell(
             dynamic value,
-            dynamic data
+            dynamic rawData
             )
         {
             Value = value;

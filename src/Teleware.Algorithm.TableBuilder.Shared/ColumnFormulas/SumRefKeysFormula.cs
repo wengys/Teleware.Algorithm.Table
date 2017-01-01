@@ -101,10 +101,6 @@ namespace Teleware.Algorithm.TableBuilder.ColumnFormulas
         }
 
         /// <summary>
-        /// 加法计算器
-        /// </summary>
-
-        /// <summary>
         /// 键名列表
         /// </summary>
         public string[] RefKeys { get; }
