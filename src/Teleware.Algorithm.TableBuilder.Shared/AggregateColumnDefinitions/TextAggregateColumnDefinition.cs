@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Teleware.Algorithm.TableBuilder.BuildContext;
 using Teleware.Algorithm.TableBuilder.Cells;
 using Teleware.Algorithm.TableBuilder.Rows;
-using Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas;
+using Teleware.Algorithm.TableBuilder.Formulas;
 
 namespace Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions
 {

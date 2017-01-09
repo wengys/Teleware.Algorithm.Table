@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder;
 using Teleware.Algorithm.TableBuilder.AggregateColumnDefinitions;
-using Teleware.Algorithm.TableBuilder.ColumnFormulas;
+using Teleware.Algorithm.TableBuilder.Formulas;
 using Teleware.Algorithm.TableBuilder.DataColumnDefinitions;
 using Teleware.Algorithm.TableBuilder.PowerTools.MergeCellsCollectors;
 using Teleware.Algorithm.TableBuilder.PowerTools.RowDataPickers;

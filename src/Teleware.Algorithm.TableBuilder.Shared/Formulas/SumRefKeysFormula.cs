@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Teleware.Algorithm.TableBuilder.Rows;
 
-namespace Teleware.Algorithm.TableBuilder.ColumnFormulas
+namespace Teleware.Algorithm.TableBuilder.Formulas
 {
     /// <summary>
     /// 根据键名计算总和公式

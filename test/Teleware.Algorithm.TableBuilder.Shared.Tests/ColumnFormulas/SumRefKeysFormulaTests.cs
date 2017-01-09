@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.BuildContext;
-using Teleware.Algorithm.TableBuilder.ColumnFormulas;
+using Teleware.Algorithm.TableBuilder.Formulas;
 using Teleware.Algorithm.TableBuilder.Rows;
 using Xunit;
 

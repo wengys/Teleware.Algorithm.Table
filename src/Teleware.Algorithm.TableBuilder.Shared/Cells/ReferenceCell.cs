@@ -19,7 +19,7 @@ namespace Teleware.Algorithm.TableBuilder.Cells
             )
         {
             Value = value;
-            RawData = data;
+            RawData = rawData;
         }
 
         /// <summary>

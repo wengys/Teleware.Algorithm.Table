@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Teleware.Algorithm.TableBuilder.BuildContext;
 using Teleware.Algorithm.TableBuilder.Rows;
 
-namespace Teleware.Algorithm.TableBuilder.Shared.ColumnFormulas
+namespace Teleware.Algorithm.TableBuilder.Formulas
 {
     /// <summary>
     /// 文本聚合列公式

@@ -53,11 +53,11 @@
     <Compile Include="Cells\FormulaCell.cs" />
     <Compile Include="Cells\ReferenceCell.cs" />
     <Compile Include="Cells\StaticTextCell.cs" />
-    <Compile Include="ColumnFormulas\TextAggregateColumnFormula.cs" />
+    <Compile Include="Formulas\TextAggregateColumnFormula.cs" />
     <Compile Include="DataColumnDefinition.cs" />
     <Compile Include="DataColumnDefinitions\FormulaColumnDefinition.cs" />
     <Compile Include="DataColumnDefinitions\ReferenceColumnDefinition.cs" />
-    <Compile Include="ColumnFormulas\SumRefKeysFormula.cs" />
+    <Compile Include="Formulas\SumRefKeysFormula.cs" />
     <Compile Include="IColumnFormula.cs" />
     <Compile Include="CellReference.cs" />
     <Compile Include="RowDefinitions\AggregateRowDefinition.cs" />
