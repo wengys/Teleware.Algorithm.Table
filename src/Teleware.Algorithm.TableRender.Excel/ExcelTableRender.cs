@@ -38,19 +38,23 @@ namespace Teleware.Algorithm.TableRender.Excel
         private void RenderMergeCells(IEnumerable<IEnumerable<CellReference>> mergeCellGroups, int rowOffset, SheetData sheetData, Worksheet worksheet)
         {
             // TODO: 完成坐标转换计算
-            //if (mergeCellGroups == null)
-            //{
-            //    return;
-            //}
-            //foreach (var mergeCellGroup in mergeCellGroups)
-            //{
-            //    MergeCells mergeCells;
-            //    mergeCells = GetMergeCells(worksheet);
-            //    MergeCell mergeCell = new MergeCell() { Reference = new StringValue("A1" + ":" + "B1") };
-            //    mergeCells.Append(mergeCell);
+            if (mergeCellGroups == null)
+            {
+                return;
+            }
+            foreach (var mergeCellGroup in mergeCellGroups)
+            {
+                var firrst = mergeCellGroup.First();
+                var last = mergeCellGroup.Last();
+                string cell1Name1 = ToExcelColNum(firrst.ColNum + 1) + (firrst.RowNum + 1 + rowOffset);
+                string cellName2 = ToExcelColNum(last.ColNum + 1) + (last.RowNum + 1 + rowOffset);
+                MergeCells mergeCells;
+                mergeCells = GetMergeCells(worksheet);
+                MergeCell mergeCell = new MergeCell() { Reference = new StringValue(cell1Name1 + ":" + cellName2) };
+                mergeCells.Append(mergeCell);
 
-            //    worksheet.Save();
-            //}
+                worksheet.Save();
+            }
         }
 
         private static MergeCells GetMergeCells(Worksheet worksheet)
