@@ -61,6 +61,7 @@
     <Compile Include="IColumnFormula.cs" />
     <Compile Include="CellReference.cs" />
     <Compile Include="RowDefinitions\AggregateRowDefinition.cs" />
+    <Compile Include="RowDefinitions\AggregateRowPosition.cs" />
     <Compile Include="Rows\DataRow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Row.cs" />

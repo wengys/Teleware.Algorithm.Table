@@ -35,7 +35,7 @@ namespace Sample
                         new TextAggregateColumnDefinition(1,"sum-{0}:"),
                         new FormulaAggregateColumnDefinition(3,new SumRefKeysDecimalFormula(value=>(decimal)value,"值")),
                         //new TextAggregateColumnDefinition("占比","大类占比")
-                    })
+                    }, AggregateRowPositions.Begin)
                 )
                 .SetMergeCellsCollectors(new SameValueMergeCellsCollector(0, 1), new SameValueMergeCellsCollector(1, 3, AcceptRowTypes.AggregateRow, true))
                 .CreateBuilder();

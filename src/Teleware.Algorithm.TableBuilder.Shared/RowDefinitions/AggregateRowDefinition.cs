@@ -24,12 +24,19 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
         /// <param name="aggregateKeySelector">聚合键生成器, 参见<see cref="AggregateKeySelector"/></param>
         /// <param name="columns">聚合行中的聚合列定义</param>
         /// <param name="rowDecorator">行装饰器</param>
-        public AggregateRowDefinition(string aggregateRowDefinitionName, Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns, Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator)
+        /// <param name="position">聚合行出现位置</param>
+        public AggregateRowDefinition(
+            string aggregateRowDefinitionName,
+            Func<DataRow, string> aggregateKeySelector,
+            IEnumerable<AggregateColumnDefinition> columns,
+            Func<AggregateRow, AggregateRowBuildContext, AggregateRow> rowDecorator,
+            AggregateRowPositions position = AggregateRowPositions.End)
         {
             Name = aggregateRowDefinitionName;
             AggregateKeySelector = aggregateKeySelector;
             Columns = columns;
             RowDecorator = rowDecorator ?? _id;
+            Position = position;
         }
 
         /// <summary>
@@ -38,8 +45,13 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
         /// <param name="aggregateRowDefinitionName">聚合列定义名，聚合列列表内唯一</param>
         /// <param name="aggregateKeySelector">聚合键生成器, 参见<see cref="AggregateKeySelector"/></param>
         /// <param name="columns">聚合行中的聚合列定义</param>
-        public AggregateRowDefinition(string aggregateRowDefinitionName, Func<DataRow, string> aggregateKeySelector, IEnumerable<AggregateColumnDefinition> columns)
-            : this(aggregateRowDefinitionName, aggregateKeySelector, columns, null)
+        /// <param name="position">聚合行出现位置</param>
+        public AggregateRowDefinition(
+            string aggregateRowDefinitionName,
+            Func<DataRow, string> aggregateKeySelector,
+            IEnumerable<AggregateColumnDefinition> columns,
+            AggregateRowPositions position = AggregateRowPositions.End)
+            : this(aggregateRowDefinitionName, aggregateKeySelector, columns, null, position)
         {
         }
 
@@ -68,5 +80,10 @@ namespace Teleware.Algorithm.TableBuilder.RowDefinitions
         /// 行装饰器
         /// </summary>
         public Func<AggregateRow, AggregateRowBuildContext, AggregateRow> RowDecorator { get; }
+
+        /// <summary>
+        /// 聚合行出现位置
+        /// </summary>
+        public AggregateRowPositions Position { get; }
     }
 }

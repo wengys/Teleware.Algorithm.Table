@@ -125,7 +125,15 @@ namespace Teleware.Algorithm.TableBuilder.TableBodyBuilder.Impl
 
         private Tuple<int, AggregateRow> CreateAggregateRow(string lastKey, AggregateRowDefinition aggregateRowDef, List<Tuple<int, DataRow>> rowsToAggregate, int aggregateRowIndex)
         {
-            var rowNum = rowsToAggregate[rowsToAggregate.Count - 1].Item1 + 1;
+            int rowNum;
+            if (aggregateRowDef.Position == AggregateRowPositions.End)
+            {
+                rowNum = rowsToAggregate[rowsToAggregate.Count - 1].Item1 + 1;
+            }
+            else
+            {
+                rowNum = rowsToAggregate[0].Item1;
+            }
             var cellCount = rowsToAggregate.First().Item2.Cells.Count;
 
             var cells = Enumerable.Repeat<Cell>(EmptyCell.Singleton, cellCount).ToList();
