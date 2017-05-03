@@ -13,8 +13,19 @@ using Tuple = System.Tuple;
 
 namespace Teleware.Algorithm.TableRender.Excel
 {
+    /// <summary>
+    /// Excel表格渲染器
+    /// </summary>
+    /// <remarks>
+    /// 本渲染器用于将<see cref="Teleware.Algorithm.TableBuilder.Table"/>渲染为Excel表/>
+    /// </remarks>
     public class ExcelTableRender
     {
+        /// <summary>
+        /// 渲染表格
+        /// </summary>
+        /// <param name="table"></param>
+        /// <returns></returns>
         public Stream Render(Teleware.Algorithm.TableBuilder.Table table)
         {
             var sheetElems = CreateSpreadsheetInMemory();
@@ -252,7 +263,7 @@ namespace Teleware.Algorithm.TableRender.Excel
             return Tuple.Create(memoryStream, spreadsheetDocument, workbook, worksheet, sheetData, sharedStringTable);
         }
 
-        public string ToExcelColNum(int colNum)
+        private string ToExcelColNum(int colNum)
         {
             string rtn = string.Empty;
             List<int> iList = new List<int>();

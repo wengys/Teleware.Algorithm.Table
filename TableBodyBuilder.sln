@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Demo\Runner\Sample.csproj", "{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableBuilder.Shared", "src\Teleware.Algorithm.TableBuilder.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj", "{41C4562F-FB21-4444-938C-2F040B17A61A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableBuilder.TableBodyBuilder", "src\Teleware.Algorithm.TableBuilder.TableBodyBuilder\Teleware.Algorithm.TableBuilder.TableBodyBuilder.csproj", "{B559712E-4825-4910-A993-DDB9D73122FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableRender.Json", "src\Teleware.Algorithm.TableRender.Json\Teleware.Algorithm.TableRender.Json.csproj", "{17B0C299-A581-45A2-B1B3-25C7FDC2E00E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableRender.Excel", "src\Teleware.Algorithm.TableRender.Excel\Teleware.Algorithm.TableRender.Excel.csproj", "{FF4CE0AA-54E8-4E8B-B45C-431368414E87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teleware.Algorithm.TableBuilder.PowerTools", "src\Teleware.Algorithm.TableBuilder.PowerTools\Teleware.Algorithm.TableBuilder.PowerTools.csproj", "{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02898837-01B3-480B-8D47-45F75117DA92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demo", "demo", "{86F17B0E-DD04-4D0E-B59D-9E9C48B8AE07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{105EABDB-5B93-4CC6-92C7-4E8F15DC5576}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41C4562F-FB21-4444-938C-2F040B17A61A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41C4562F-FB21-4444-938C-2F040B17A61A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41C4562F-FB21-4444-938C-2F040B17A61A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41C4562F-FB21-4444-938C-2F040B17A61A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B559712E-4825-4910-A993-DDB9D73122FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B559712E-4825-4910-A993-DDB9D73122FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B559712E-4825-4910-A993-DDB9D73122FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B559712E-4825-4910-A993-DDB9D73122FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B0C299-A581-45A2-B1B3-25C7FDC2E00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B0C299-A581-45A2-B1B3-25C7FDC2E00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B0C299-A581-45A2-B1B3-25C7FDC2E00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B0C299-A581-45A2-B1B3-25C7FDC2E00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF4CE0AA-54E8-4E8B-B45C-431368414E87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{105EABDB-5B93-4CC6-92C7-4E8F15DC5576} = {86F17B0E-DD04-4D0E-B59D-9E9C48B8AE07}
+		{41C4562F-FB21-4444-938C-2F040B17A61A} = {02898837-01B3-480B-8D47-45F75117DA92}
+		{B559712E-4825-4910-A993-DDB9D73122FF} = {02898837-01B3-480B-8D47-45F75117DA92}
+		{17B0C299-A581-45A2-B1B3-25C7FDC2E00E} = {02898837-01B3-480B-8D47-45F75117DA92}
+		{FF4CE0AA-54E8-4E8B-B45C-431368414E87} = {02898837-01B3-480B-8D47-45F75117DA92}
+		{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8} = {02898837-01B3-480B-8D47-45F75117DA92}
+	EndGlobalSection
+EndGlobal

@@ -1,72 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\..\build\common.props" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE9DDDD4-6805-4746-9DDF-CE3D23BC00C8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Teleware.Algorithm.TableBuilder.PowerTools</RootNamespace>
-    <AssemblyName>Teleware.Algorithm.TableBuilder.PowerTools</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <TargetFrameworkProfile />
+    <Description>
+      表格算法-PowerTools
+    </Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Teleware.Algorithm.TableBuilder.PowerTools.XML</DocumentationFile>
-  </PropertyGroup>
+
   <PropertyGroup>
-    <StartupObject />
+    <TargetFrameworks>net46;netstandard1.6</TargetFrameworks>
   </PropertyGroup>
+
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.3.0" />
+    <PackageReference Include="System.Dynamic.Runtime" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="MergeCellsCollectors\SameValueCollector.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RowDataPickers\RowDataPicker.cs" />
+    <ProjectReference Include="..\Teleware.Algorithm.TableBuilder.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj" />
+    <ProjectReference Include="..\Teleware.Algorithm.TableBuilder.TableBodyBuilder\Teleware.Algorithm.TableBuilder.TableBodyBuilder.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Teleware.Algorithm.TableBuilder.Shared\Teleware.Algorithm.TableBuilder.Shared.csproj">
-      <Project>{41c4562f-fb21-4444-938c-2f040b17a61a}</Project>
-      <Name>Teleware.Algorithm.TableBuilder.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Teleware.Algorithm.TableBuilder.TableBodyBuilder\Teleware.Algorithm.TableBuilder.TableBodyBuilder.csproj">
-      <Project>{b559712e-4825-4910-a993-ddb9d73122ff}</Project>
-      <Name>Teleware.Algorithm.TableBuilder.TableBodyBuilder</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

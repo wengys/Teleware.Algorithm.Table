@@ -8,13 +8,30 @@ using Teleware.Algorithm.TableBuilder.TableBodyBuilder;
 
 namespace Teleware.Algorithm.TableBuilder.PowerTools.MergeCellsCollectors
 {
+    /// <summary>
+    /// 参与合并的行类型
+    /// </summary>
     public enum AcceptRowTypes
     {
+        /// <summary>
+        /// 聚合行
+        /// </summary>
         AggregateRow = 1,
+
+        /// <summary>
+        /// 数据行
+        /// </summary>
         DataRow = 2,
+
+        /// <summary>
+        /// 任意行
+        /// </summary>
         Any = AggregateRow | DataRow
     }
 
+    /// <summary>
+    /// 相同值合并采集器
+    /// </summary>
     public class SameValueMergeCellsCollector : IMergeCellsCollector
     {
         private readonly int _maxColNum;
@@ -26,8 +43,11 @@ namespace Teleware.Algorithm.TableBuilder.PowerTools.MergeCellsCollectors
         /// <summary>
         /// [<paramref name="minColNum"/>, <paramref name="maxColNum"/>)
         /// </summary>
-        /// <param name="minColNum"></param>
-        /// <param name="maxColNum"></param>
+        /// <param name="minColNum">起始列</param>
+        /// <param name="maxColNum">结束列</param>
+        /// <param name="rowTypes">参与合并的行类型</param>
+        /// <param name="sameAggregateKey">如果连续两个聚合列，合并时是否要求两列具有相同聚合key</param>
+        /// <param name="treatNullEqualsAny">是否将值为null的列直接与其他列合并</param>
         public SameValueMergeCellsCollector(int minColNum = 0, int maxColNum = int.MaxValue, AcceptRowTypes rowTypes = AcceptRowTypes.Any, bool treatNullEqualsAny = false, bool sameAggregateKey = true)
         {
             _maxColNum = maxColNum;
@@ -50,6 +70,11 @@ namespace Teleware.Algorithm.TableBuilder.PowerTools.MergeCellsCollectors
             }
         }
 
+        /// <summary>
+        /// 采集合并列
+        /// </summary>
+        /// <param name="rows">行</param>
+        /// <returns>两两一组需要合并的列</returns>
         public IEnumerable<Tuple<CellReference, CellReference>> Collect(IList<Row> rows)
         {
             for (int i = 0; i < rows.Count; i++)
